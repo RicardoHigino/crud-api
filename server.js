@@ -1,21 +1,21 @@
 require('dotenv').config();
 const express = require('express');
 const routes = require('./routes');
+const app = express();
+const mongoose = require('mongoose');
 
-app = express();
-port = process.env.PORT || 3000;
-mongoose = require('mongoose');
-livro = require('./api/models/livroModel');
-bodyParser = require('body-parser');
+mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => {
+        app.emit('pronto')
+    })
+    .catch((e) => console.log(e))
 
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.CONNECTIONSTRING)
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(routes)
 
-app.listen(port, () => {
-    console.log('Server iniciado!')
+app.on('pronto', () => {
+    app.listen(3000, () => {
+        console.log('Server initialized on port 3000')
+    })
 })
