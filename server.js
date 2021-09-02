@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const routes = require('./routes');
 
 app = express();
 port = process.env.PORT || 3000;
@@ -13,8 +14,7 @@ mongoose.connect(process.env.CONNECTIONSTRING)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('./api/routes/livroRoutes');
-routes(app);
+app.use(routes)
 
 app.listen(port, () => {
     console.log('Server iniciado!')

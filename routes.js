@@ -11,4 +11,4 @@ route.put('/livro/:livroId', livroController.atualiza_um_livro)
 route.delete('/livro/:livroId', livroController.remove_um_livro)
 
 
-module.exports = routes;
+module.exports = route;

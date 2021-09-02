@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const livro = mongoose.model('livro')
+const livro = require('../models/livroModel')
 
 // GET ALL
 exports.lista_todos_os_livros = function(req, res) {
