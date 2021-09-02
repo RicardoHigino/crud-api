@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 
 app = express();
@@ -7,7 +8,7 @@ livro = require('./api/models/livroModel');
 bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://codericardo:14201030rr@js.rk0rm.mongodb.net/Books?retryWrites=true&w=majority')
+mongoose.connect(process.env.CONNECTIONSTRING)
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
