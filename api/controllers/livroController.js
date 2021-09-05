@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const livro = require('../models/livroModel')
 
 // GET ALL
