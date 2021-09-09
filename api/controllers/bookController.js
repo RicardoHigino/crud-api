@@ -1,4 +1,4 @@
-const livro = require('../models/livroModel')
+const livro = require('../models/bookModel')
 
 // GET ALL
 exports.lista_todos_os_livros = function(req, res) {
